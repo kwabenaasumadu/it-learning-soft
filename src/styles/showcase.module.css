@@ -3,3 +3,53 @@
    height: 82vh;
    background-color: #BCDDFF;
 }
+
+.containerItems{
+   width: 60%;
+   margin: 0 auto;
+   display: grid;
+   grid-template-columns: 1fr auto;
+}
+
+.leftItems{
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   flex-direction: column;
+   height: 100%;
+   width: 100%;
+}
+
+.leftItems .item p{
+   color: #2D3092;
+   font-family: cursive;
+   font-size: 20px;
+}
+
+.leftItems .item2 {
+   margin-top: 8%;
+}
+
+.leftItems .item2 h1{
+   font-size: 50px;
+   font-family: sans-serif;
+}
+
+.leftItems .item3 {
+   margin-top: 8%;
+}
+
+.leftItems .item3 button {
+   padding: 20px;
+   border-radius: 30px;
+   border: none;
+   font-family: cursive;
+   cursor: pointer;
+   transition: transform 0.5s;
+}
+
+.leftItems .item3 button:hover {
+   background-color: #2D3092;
+   color: #fff;
+   transform: translateX(30px); 
+}
