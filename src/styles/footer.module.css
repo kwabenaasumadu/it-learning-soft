@@ -72,3 +72,43 @@
 .lastSection p{
    color: #fff;
 }
+
+@media (max-width: 700px){
+   .container1Items{
+      width: 90%;
+      grid-template-columns: auto;
+      padding: 10px;
+   }
+
+   .item1 span{
+      color: #fff;
+      font-size: 15px;
+   }
+   
+   .item1Input{
+      margin-top: 4%;
+   }
+   
+   .item1Input input{
+      width: 260px;
+      height: 40px;
+      padding-left: 10px;
+      border-radius: 20px;
+   }
+   .item1Input button{
+      width: 100px;
+      height: 40px;
+   }
+
+   .item2 .icon {
+      color: #fff;
+      font-size: 20px;
+      margin-left: 20px;
+      margin-top: 20px;
+   }
+   .lastSection p{
+      color: #fff;
+      font-size: 9px;
+   }
+   
+}

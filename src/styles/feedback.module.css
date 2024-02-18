@@ -60,3 +60,10 @@
    font-size: 20px;
    font-family: sans-serif;
 }
+
+@media (max-width:700px) {
+   .containerItems{
+      width: 90%;
+   }
+   
+}

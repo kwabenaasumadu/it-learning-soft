@@ -53,3 +53,41 @@
    color: #fff;
    transform: translateX(30px); 
 }
+
+
+@media (max-width:700px){
+   .container{
+      height: 100%;
+   }
+
+   .containerItems{
+      width: 100%;
+      grid-template-columns: 1fr;
+      padding: 10px;
+   }
+
+   .leftItems .item2{
+      width:70%;
+      margin-top: 5%;
+   }
+
+   .leftItems .item2 h1{
+      font-size: 20px;
+      font-family: sans-serif;
+   }
+
+   .rightItems{
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+   }
+
+   .showcaseImage{
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 100%;
+      height: 100%;
+   }
+   
+}

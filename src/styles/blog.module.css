@@ -1,17 +1,17 @@
-.container{
+.container {
    width: 100%;
    height: 100%;
    background-color: #2D3092;
    padding: 10px;
 }
 
-.containerFirstHeader{
+.containerFirstHeader {
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-.containerFirstHeader p{
+.containerFirstHeader p {
    color: aqua;
    margin-top: 40px;
    letter-spacing: 1px;
@@ -19,13 +19,13 @@
    font-weight: 100;
 }
 
-.containerSecondHeader{
+.containerSecondHeader {
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-.containerSecondHeader h1{
+.containerSecondHeader h1 {
    color: #fff;
    margin-top: 15px;
    letter-spacing: 1px;
@@ -33,44 +33,65 @@
    font-size: 45px;
 }
 
-.containerItems{
+.containerItems {
    width: 60%;
    margin: 2% auto;
 }
 
-.containerItems .items{
+.containerItems .items {
    display: grid;
    grid-template-columns: 1fr 1fr 1fr;
    gap: 30px;
 }
 
-.containerItems .items .item{
+.containerItems .items .item {
    background-color: #fff;
    padding: 10px;
    border-radius: 10px;
    transition: transform 0.6s;
 }
 
-.containerItems .items .item:hover{
+.containerItems .items .item:hover {
    transform: translateX(40px);
 }
 
-.containerItems .items .item .itemDate p{
+.containerItems .items .item .itemDate p {
    color: #000;
    font-size: 13px;
 }
 
-.containerItems .items .item .itemTitle{
+.containerItems .items .item .itemTitle {
    width: 90%;
    margin-top: 10px;
 }
 
-.containerItems .items .item .itemTitle h1{
+.containerItems .items .item .itemTitle h1 {
    color: #000;
    font-size: 25px;
 }
 
-.itemAction{
+.itemAction {
    margin-top: 30px;
    margin-bottom: 10px;
+}
+
+@media (max-width:700px) {
+   .containerItems .items {
+      display: grid;
+      grid-template-columns: auto;
+      gap: 30px;
+   }
+
+   .containerItems {
+      width: 90%;
+      margin-top: 10%;
+   }
+
+   .containerSecondHeader h1 {
+      font-size: 20px;
+   }
+
+   .containerFirstHeader p {
+      font-size: 12px;
+   }
 }
