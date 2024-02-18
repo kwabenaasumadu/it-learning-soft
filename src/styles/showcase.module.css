@@ -66,6 +66,10 @@
       padding: 10px;
    }
 
+   .leftItems {
+      margin-top: 5%;
+   }
+
    .leftItems .item2{
       width:70%;
       margin-top: 5%;
