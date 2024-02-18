@@ -12,6 +12,10 @@ function Index() {
     router.push("/comps/courses/python/");
   };
 
+  const navigateToProgramming = () => {
+   router.push("/comps/courses/programming/");
+ };
+
   return (
     <>
       <div className={styles.container}>
@@ -25,6 +29,29 @@ function Index() {
 
         <div className={styles.containerItems}>
           <div className={styles.items}>
+
+          <div className={styles.item}>
+              <div className={styles.iconContainer}>
+                <BookIcon className={styles.icon} />
+              </div>
+
+              <div className={styles.itemHeader}>
+                <h1>Introduction To Programming</h1>
+              </div>
+
+              <div className={styles.itemDes}>
+                <p>
+                  Sorem hpsum folor sixdsft amhtget, consectetur adipiscing
+                  eliht, sed do eiusmod tempor incidi.
+                </p>
+              </div>
+
+              <div className={styles.itemAction}>
+                <p onClick={navigateToProgramming}>Read More </p>
+              </div>
+            </div>
+
+
             <div className={styles.item}>
               <div className={styles.iconContainer}>
                 <List className={styles.icon} />
@@ -46,26 +73,7 @@ function Index() {
               </div>
             </div>
 
-            <div className={styles.item}>
-              <div className={styles.iconContainer}>
-                <BookIcon className={styles.icon} />
-              </div>
-
-              <div className={styles.itemHeader}>
-                <h1>Web Design</h1>
-              </div>
-
-              <div className={styles.itemDes}>
-                <p>
-                  Sorem hpsum folor sixdsft amhtget, consectetur adipiscing
-                  eliht, sed do eiusmod tempor incidi.
-                </p>
-              </div>
-
-              <div className={styles.itemAction}>
-                <p>Read More </p>
-              </div>
-            </div>
+   
 
             <div className={styles.item}>
               <div className={styles.iconContainer}>
