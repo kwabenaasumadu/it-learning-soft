@@ -43,6 +43,15 @@
    border: 1px solid #aeaeae;
 }
 
+.containerItems .items .item:hover {
+   background-color: #2D3092;
+   color: #fff;
+}
+
+.containerItems .items .item:hover .iconContainer .icon {
+   color: #fff;
+}
+
 .containerItems .items .item .iconContainer .icon {
    font-size: 40px;
    color: #2D3092;
