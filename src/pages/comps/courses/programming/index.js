@@ -67,9 +67,9 @@ function Index() {
               <p>
                 <ul>
                   <li>
-                    Writing the code: You write the program&apos;s instructions (
-                    source code ) in a programming language using text editor or
-                    IDE ( Integrated Development Environment ).
+                    Writing the code: You write the program&apos;s instructions
+                    ( source code ) in a programming language using text editor
+                    or IDE ( Integrated Development Environment ).
                   </li>
                   <br />
                   <li>
@@ -83,6 +83,82 @@ function Index() {
                     the computer reads the instructions one by one and runs it
                     or execute them
                   </li>
+                </ul>
+              </p>
+            </div>
+
+            <div className={styles.itemDescription}>
+              <div className={styles.itemDesHeader}>
+                <h1>Programmer</h1>
+              </div>
+              <p>
+                A programmer, also sometimes referred to as a software engineer,
+                software developer, or coder, is a person who can design,
+                create, and test computer programs. They do this by writing
+                instructions, called code, in a specific programming language
+                that a computer can understand. Programmers come in all shapes
+                and sizes, with varying levels of experience and specialization.
+                Here are some common types:
+              </p>
+              <p>
+                <ul>
+                  <li>
+                    Full-Stack Developer - This programmer works on both the
+                    front-end ( what users see and interact with ) and back-end
+                    ( the server-side logic ) of applications.{" "}
+                  </li>
+
+                  <li>
+                    Front-end Developer - This programmer focus on the user
+                    interface of applications.
+                  </li>
+
+                  <li>
+                    Back-end Developer - They build the behind the scenes logics
+                    of applications.
+                  </li>
+                </ul>
+              </p>
+            </div>
+
+            <div className={styles.itemDescription}>
+              <div className={styles.itemDesHeader}>
+                <h1>Essential Skills For Programmers</h1>
+              </div>
+              <p>
+                <ul>
+                  <li>
+                    Problem-solving: Identifying and breaking down complex
+                    problems into smaller, solvable steps.
+                  </li>
+
+                  <li>
+                    Logical Thinking: Writing clear, concise, and well-organized
+                    code that follows logical steps.
+                  </li>
+
+                  <li>
+                    Continuous learning: The field of programming is constantly
+                    envolving, so programmers need to stay up to date with new
+                    technologies and trends.
+                  </li>
+                </ul>
+              </p>
+            </div>
+
+            <div className={styles.itemDescription}>
+              <div className={styles.itemDesHeader}>
+                <h1>Benefits Of Learning Programming</h1>
+              </div>
+              <p>
+                <ul>
+                  <li>Increased job opportunities in various fields.</li>
+
+                  <li>
+                    Develops critical thinking, problem-solving, and creativity.
+                  </li>
+
+                  <li>Allows you to build your own tools and applications.</li>
                 </ul>
               </p>
             </div>
