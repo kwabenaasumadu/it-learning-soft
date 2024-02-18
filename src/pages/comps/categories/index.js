@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../../styles/categories.module.css";
 import List from "@mui/icons-material/List";
 import BookIcon from "@mui/icons-material/Book";
 import Web from "@mui/icons-material/Web";
+import { useRouter } from "next/router";
 
 function Index() {
+  const router = useRouter();
+
+  const navigateToPython = () => {
+    router.push("/comps/courses/python/");
+  };
+
   return (
     <>
       <div className={styles.container}>
@@ -23,8 +30,8 @@ function Index() {
                 <List className={styles.icon} />
               </div>
 
-              <div className={styles.itemHeader}>
-                <h1>Web Design</h1>
+              <div className={styles.itemHeader} onClick={navigateToPython}>
+                <h1>Learn Python</h1>
               </div>
 
               <div className={styles.itemDes}>
@@ -35,7 +42,7 @@ function Index() {
               </div>
 
               <div className={styles.itemAction}>
-                <p>Read More </p>
+                <p onClick={navigateToPython}>Read More </p>
               </div>
             </div>
 
