@@ -1,0 +1,104 @@
+.container {
+   width: 100%;
+   height: 100%;
+   margin-top: 7%;
+}
+
+.containerFirstHeader {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.containerFirstHeader p {
+   font-family: cursive;
+   color: #2D3092;
+}
+
+.containerSecondtHeader {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 10px;
+}
+
+.containerSecondtHeader h1 {
+   font-family: sans-serif;
+   letter-spacing: 1px;
+}
+
+.containerItems {
+   width: 50%;
+   margin: 4% auto;
+}
+
+.items {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   gap: 30px;
+}
+
+.containerItems .items .item {
+   padding: 30px;
+   border: 1px solid #aeaeae;
+}
+
+.containerItems .items .item .iconContainer .icon {
+   font-size: 40px;
+   color: #2D3092;
+}
+
+.containerItems .items .item .itemHeader {
+   margin-top: 15px;
+}
+
+.containerItems .items .item .itemHeader h1 {
+   font-size: 30px;
+   font-family: sans-serif;
+}
+
+.containerItems .items .item .itemDes {
+   margin-top: 25px;
+}
+
+.containerItems .items .item .itemDes p {
+   font-size: 15px;
+   color: #848080;
+   font-family: sans-serif;
+}
+
+.containerItems .items .item .itemAction {
+   margin-top: 25px;
+}
+
+.containerItems .items .item .itemAction p {
+   font-size: 15px;
+   font-family: cursive;
+   transition: transform 0.5s;
+   cursor: pointer;
+}
+.containerItems .items .item .itemAction p:hover {
+   transform: translateX(20px);
+}
+
+.containerLastSection{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 20px;
+   cursor: pointer;
+}
+
+.containerLastSection h1{
+   background-color: #2D3092;
+   color: #fff;
+   padding: 15px;
+   height: 50px;
+   width: 200px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 15px;
+   font-weight: 100;
+   font-family: sans-serif;
+}

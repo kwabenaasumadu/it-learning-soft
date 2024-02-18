@@ -1,7 +1,8 @@
 import React from "react";
 import FirstHeader from "./firstHeader";
 import SecondHeader from "./secondHeader";
-import Showcase from './showcase'
+import Showcase from "./showcase";
+import Categories from "./categories";
 
 function Index() {
   return (
@@ -10,6 +11,7 @@ function Index() {
         <FirstHeader />
         <SecondHeader />
         <Showcase />
+        <Categories />
       </div>
     </>
   );
