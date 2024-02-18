@@ -101,6 +101,10 @@
    transform: translateX(20px); 
 }
 
+.menuIcon{
+   display: none;
+}
+
 @media (max-width: 700px){
    .container{
       background-color: #fff;
@@ -108,13 +112,79 @@
    }
 
    .containerItems{
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
    }
 
    .leftItems{
       background-color: #fff;
       width: 100%;
-      margin-left: 2%;
+      margin-left: 0%;
+   }
+
+   .menuIcon{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .menu {
+      position: fixed;
+      top: 0;
+      right: 0px;
+      height: 100vh;
+      width: 60%;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+
+    .closeBurger{
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+
+    .closeBurger h1{
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+    
+    .menu p {
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+   .menuIcon p{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+   }
+
+   .navLinks{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin-top: 10%;
+   }
+
+   .profile{
+      margin-top: 20%;
+   }
+
+   .profile .item{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+   }
+
+   .profile .item p{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      color: red;
    }
 
    .leftItems .items{
