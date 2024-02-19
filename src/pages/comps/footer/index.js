@@ -29,8 +29,7 @@ function Index() {
 
         <div className={styles.lastSection}>
           <p>
-            Copyright ©2024 All rights reserved | This template is made with by
-            Colorlib
+            Copyright ©2024 All rights reserved | ProgramWithCod
           </p>
         </div>
       </div>

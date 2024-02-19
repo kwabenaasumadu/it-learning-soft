@@ -22,6 +22,10 @@ function Index() {
     router.push("/comps/user_feedback/");
   };
 
+  const navigateToForum = () => {
+    router.push("/comps/forum/");
+  };
+
   return (
     <>
       <div className={styles.container}>
@@ -37,7 +41,7 @@ function Index() {
             <div className={styles.items}>
               <p>Home</p>
               <p>About</p>
-              <p>Courses</p>
+              <p onClick={navigateToForum}>Forum</p>
               <p onClick={navigateToFeedback}>Feedback</p>
               <p>Contact</p>
             </div>
@@ -64,7 +68,7 @@ function Index() {
           <div className={styles.navLinks}>
             <p>Home</p>
             <p>About</p>
-            <p>Courses</p>
+            <p onClick={navigateToForum}>Forum</p>
             <p onClick={navigateToFeedback}>Feedback</p>
             <p>Contact</p>
           </div>
