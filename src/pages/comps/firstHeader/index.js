@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../../../styles/firstheader.module.css";
-import Image from "next/image";
 import Person2 from "@mui/icons-material/Person2";
 import Logout from "@mui/icons-material/LogoutOutlined";
 import FacebookIcon from "@mui/icons-material/Facebook";

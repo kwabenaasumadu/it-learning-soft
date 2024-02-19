@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Comps from "../pages/comps";
 import styles from '../styles/Home.module.css'
-import SecondHeader from '../pages/comps/secondHeader'
 
 export default function Home() {
   return (

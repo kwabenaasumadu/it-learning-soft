@@ -163,11 +163,6 @@ function Index() {
               </p>
             </div>
           </div>
-
-          <div className={styles.itemAction}>
-            <p>Want to Learn More</p>
-            <h1>Click To Download</h1>
-          </div>
         </div>
       </div>
     </>
