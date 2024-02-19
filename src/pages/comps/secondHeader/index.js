@@ -3,17 +3,24 @@ import styles from "../../../styles/secondHeader.module.css";
 import ShieldIcon from "@mui/icons-material/Shield";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logout from "@mui/icons-material/LogoutOutlined";
+import { useRouter } from "next/router";
 
 function Index() {
   const [toggleMenu, setToggleMenu] = useState(false);
 
+  const router = useRouter();
+
   const toggleMenuHandler = () => {
-    setToggleMenu(true)
+    setToggleMenu(true);
   };
 
   const closeMenuHandler = () => {
-   setToggleMenu(false)
-  }
+    setToggleMenu(false);
+  };
+
+  const navigateToFeedback = () => {
+    router.push("/comps/user_feedback/");
+  };
 
   return (
     <>
@@ -31,7 +38,7 @@ function Index() {
               <p>Home</p>
               <p>About</p>
               <p>Courses</p>
-              <p>Blog</p>
+              <p onClick={navigateToFeedback}>Feedback</p>
               <p>Contact</p>
             </div>
           </div>
@@ -58,7 +65,7 @@ function Index() {
             <p>Home</p>
             <p>About</p>
             <p>Courses</p>
-            <p>Blog</p>
+            <p onClick={navigateToFeedback}>Feedback</p>
             <p>Contact</p>
           </div>
 
