@@ -1,34 +1,81 @@
 import React, { useState } from "react";
 import styles from "../../styles/login.module.css";
 import { auth } from "../../../firebase.config";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { sendEmailVerification } from "firebase/auth";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Index() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [createLoading, setCreateLoading] = useState(false);
+  const [resetLoading, setResetLoading] = useState(false);
 
-  const handleLogin = async () => {
+  const SignIn = async (e) => {
+    e.preventDefault();
+    setLoginLoading(true);
+
+    if (!email || !password) {
+      toast.error("Please enter your email or password");
+    }
+
     try {
-      await auth.signInWithEmailAndPassword(email, password);
-      // Login successful, handle further actions (e.g., redirect)
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      toast.success("Welcome", userCredential.user.email);
     } catch (error) {
-      setErrorMessage(error.message);
+      toast.error("Email or password error");
+    } finally {
+      setLoginLoading(false);
     }
   };
 
-  const handleSignUp = async () => {
+  const resetPassword = async () => {
+    if (!email) {
+      toast.error("Please enter your email address");
+    }
+
     try {
-      await auth.createUserWithEmailAndPassword(email, password);
+      await sendPasswordResetEmail(auth, email);
+      toast.success("Password reset sent successfully");
     } catch (error) {
-      setErrorMessage(error.message);
+      toast.error("Error sending password reset email");
     }
   };
 
-  const handleResetPassword = async () => {
+  const createAccount = async (e) => {
+    e.preventDefault();
+    setCreateLoading(true);
+
     try {
-      await auth.sendPasswordResetEmail(email);
+      if (!email || !password) {
+        toast.error("Please fill in your email or password");
+      }
+
+      const newUserCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      toast.success(
+        "Account successfully created",
+        newUserCredential.user.email
+      );
+      await sendEmailVerification(newUserCredential.user);
+      toast.success("Email verification sent to", newUserCredential.user.email);
     } catch (error) {
-      setErrorMessage(error.message);
+      toast.error("Error creating account");
     }
   };
 
@@ -60,14 +107,14 @@ function Index() {
             />
           </div>
 
-  
           <div className={styles.submitButton}>
-            <button onClick={handleLogin}>Login</button>
-            <button onClick={handleResetPassword}>Reset Password</button>
-            <button onClick={handleSignUp}>Create Account</button>
+            <button onClick={SignIn}>Login</button>
+            <button onClick={resetPassword}>Reset Password</button>
+            <button onClick={createAccount}>Create Account</button>
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </>
   );
 }

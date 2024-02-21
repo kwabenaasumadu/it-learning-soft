@@ -6,8 +6,21 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import Twittter from "@mui/icons-material/Twitter";
 import LinkedIn from "@mui/icons-material/LinkedIn";
 import GoogleIcon from "@mui/icons-material/Google";
+import { auth } from "../../../../firebase.config";
+import { toast } from "react-toastify";
+import { useAuth } from "@/lib/authContext";
 
 function Index() {
+  const { user } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      toast.success("Logout was successful", user.email);
+    } catch (err) {
+      toast.error("Error signing out");
+    }
+  };
   return (
     <>
       <div className={styles.container}>
@@ -31,10 +44,10 @@ function Index() {
           <div className={styles.rightItems}>
             <div className={styles.items}>
               <div className={styles.item}>
-                <Person2 className={styles.icon}/>
+                <Person2 className={styles.icon} />
                 <p>Profile</p>
               </div>
-              <div className={styles.item}>
+              <div className={styles.item} onClick={handleLogout}>
                 <Logout className={styles.icon} />
                 <p>Logout</p>
               </div>

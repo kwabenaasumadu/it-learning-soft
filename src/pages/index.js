@@ -1,10 +1,27 @@
 import Head from "next/head";
 import Comps from "../pages/comps";
 import styles from "../styles/Home.module.css";
-import { auth } from "../../firebase.config";
-import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { useAuth } from "../lib/authContext";
+import Login from "../pages/login";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const { user } = useAuth();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (user && user.emailVerified) {
+      toast.success(`Welcome ${user.displayName || 'User'}`);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); 
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -14,9 +31,17 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      {loading && (
+        <div className={styles.loadingOverlay}>
+          <div className={styles.loadingSpinner}></div>
+        </div>
+      )}
+
       <div className={styles.container}>
-        <Comps />
+        {!loading && user ? <Comps /> : <Login />}
       </div>
+      <ToastContainer />
     </>
   );
 }
