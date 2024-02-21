@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../../styles/firstheader.module.css";
 import Person2 from "@mui/icons-material/Person2";
 import Logout from "@mui/icons-material/LogoutOutlined";
@@ -12,13 +12,16 @@ import { useAuth } from "@/lib/authContext";
 
 function Index() {
   const { user } = useAuth();
+  const [logoutLoading, setLogoutLoading] = useState(false)
 
   const handleLogout = async () => {
+    setLogoutLoading(true)
     try {
       await auth.signOut();
       toast.success("Logout was successful", user.email);
     } catch (err) {
       toast.error("Error signing out");
+      setLogoutLoading(false)
     }
   };
   return (
@@ -49,7 +52,7 @@ function Index() {
               </div>
               <div className={styles.item} onClick={handleLogout}>
                 <Logout className={styles.icon} />
-                <p>Logout</p>
+                <p>{logoutLoading ? "logging out..." : "Logout"}</p>
               </div>
             </div>
           </div>

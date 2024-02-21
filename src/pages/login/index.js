@@ -13,7 +13,6 @@ import "react-toastify/dist/ReactToastify.css";
 function Index() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(null);
   const [loginLoading, setLoginLoading] = useState(false);
   const [createLoading, setCreateLoading] = useState(false);
   const [resetLoading, setResetLoading] = useState(false);
@@ -41,6 +40,7 @@ function Index() {
   };
 
   const resetPassword = async () => {
+    setResetLoading(true)
     if (!email) {
       toast.error("Please enter your email address");
     }
@@ -50,6 +50,7 @@ function Index() {
       toast.success("Password reset sent successfully");
     } catch (error) {
       toast.error("Error sending password reset email");
+      setResetLoading(false)
     }
   };
 
@@ -108,9 +109,9 @@ function Index() {
           </div>
 
           <div className={styles.submitButton}>
-            <button onClick={SignIn}>Login</button>
-            <button onClick={resetPassword}>Reset Password</button>
-            <button onClick={createAccount}>Create Account</button>
+            <button onClick={SignIn}>{loginLoading ? "wait..." : "Login"}</button>
+            <button onClick={resetPassword}>{resetLoading ? "semding..." : "Reset Password"}</button>
+            <button onClick={createAccount}>{createLoading ? "creating..." : "Create Account"}</button>
           </div>
         </div>
       </div>
