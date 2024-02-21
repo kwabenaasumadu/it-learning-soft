@@ -102,7 +102,7 @@ function Index() {
               </div>
 
               <div className={styles.itemHeader}>
-                <h1>Web Design</h1>
+                <h1>JavaScript</h1>
               </div>
 
               <div className={styles.itemDes}>
@@ -123,7 +123,7 @@ function Index() {
               </div>
 
               <div className={styles.itemHeader}>
-                <h1>Web Design</h1>
+                <h1>HTML</h1>
               </div>
 
               <div className={styles.itemDes}>
@@ -144,7 +144,7 @@ function Index() {
               </div>
 
               <div className={styles.itemHeader}>
-                <h1>Web Design</h1>
+                <h1>CSS</h1>
               </div>
 
               <div className={styles.itemDes}>
