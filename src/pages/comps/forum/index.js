@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../../styles/forum.module.css";
 import { db } from "../../../../firebase.config";
-import { push, ref, get } from "firebase/database";
+import { push, ref, get, set } from "firebase/database";
 import { ToastContainer, toast } from "react-toastify";
 import { Modal, Button, TextField } from "@mui/material";
 
@@ -14,9 +14,10 @@ function Index() {
 
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [answerData, setAnswerData] = useState(selectedAnswer)
 
   const [questionsAndAnswer, setQuestionsAndAnswer] = useState([]);
-  console.log(questionsAndAnswer);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,6 +70,25 @@ function Index() {
   const handleOpen1 = () => setOpen1(true);
   const handleClose1 = () => setOpen1(false);
 
+
+  const showEditAnswer = (rowAns) => {
+    setSelectedAnswer(rowAns);
+    setAnswerData(rowAns); // Set the current answer to the state variable
+    setOpen1(true); // Open the edit modal
+  };
+
+  const editAnswerSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const answerRef = ref(db, `questions/${selectedAnswer.key}`);
+      await set(answerRef, answerData);
+      toast.success("Answer updated successfully");
+      setOpen1(false); // Close the edit modal
+    } catch (error) {
+      toast.error("Error updating answer");
+    }
+  };
+
   return (
     <>
       <div className={styles.container}>
@@ -80,31 +100,25 @@ function Index() {
           <h1 onClick={handleOpen}>Ask Question</h1>
           <h1 onClick={handleOpen1}>Reply to Question</h1>
         </div>
-
         <div className={styles.chatContainer}>
-          <div className={styles.chats}>
-            {questionsAndAnswer.map((item) => (
-              <div
-                key={item.key}
-                className={
-                  item.answer
-                    ? styles.answerChatContainer
-                    : styles.questionChatContainer
-                }
-              >
-                <span>{item.questioner}</span>
-                <h1>{item.question}</h1>
-                <em>{item.date}</em>
-                {item.answer && (
-                  <>
-                    <span>{item.answerer}</span>
-                    <h1>{item.answer}</h1>
-                    <em>{item.date}</em>
-                  </>
-                )}
+          {questionsAndAnswer.map((chat, index) => (
+            <div className={styles.chats} key={index}>
+              <div className={styles.questionChatContainer}>
+                <span>Kwabena</span>
+                <h1>{chat.question}</h1>
+                <em>{chat.date}</em>
               </div>
-            ))}
-          </div>
+
+              <div
+                className={styles.answerChatContainer}
+                onClick={() => showEditAnswer(chat.answer)}
+              >
+                <span>Kwabena</span>
+                <h1>{chat?.answer || ""}</h1>
+                <em>{chat.date}</em>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -127,13 +141,13 @@ function Index() {
 
       <Modal open={open1} onClose={handleClose1}>
         <div className={styles.modalContainer}>
-          <h2>Ask Question</h2>
+          <h2>Answer Question</h2>
           <form onSubmit={handleSubmit}>
             <TextField
               label="Answer"
               value={formData.answer}
               onChange={(e) =>
-                setFormData({ ...formData, amswer: e.target.value })
+                setFormData({ ...formData, answer: e.target.value })
               }
             />
             <Button type="submit">Submit</Button>
@@ -141,6 +155,7 @@ function Index() {
           </form>
         </div>
       </Modal>
+
 
       <ToastContainer />
     </>
