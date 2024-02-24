@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
 import styles from "../../../../styles/python.module.css";
 import { db } from "../../../../../firebase.config";
 import { push, ref, get, set } from "firebase/database";
@@ -70,8 +72,7 @@ function Index() {
 
         <div className={styles.containerItems}>
           <div className={styles.item}>
-            <div className={styles.itemHeader}>
-            </div>
+            <div className={styles.itemHeader}></div>
 
             <div className={styles.imageContainer}>
               <Image
@@ -90,8 +91,14 @@ function Index() {
                 <h1>{data.Title || "Default Title"}</h1>
               </div>
 
-              <div className={styles.itemDescription}>
-                <p>{data.Body}</p>
+              
+
+              <div
+                className={`${styles.itemDescription} ${styles.pythonCodeContainer}`}
+              >
+                <SyntaxHighlighter language="python" style={okaidia}>
+                  {data.Body}
+                </SyntaxHighlighter>
               </div>
             </div>
           ))}

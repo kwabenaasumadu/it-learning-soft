@@ -42,7 +42,7 @@
 }
 
 .itemDescription{
-   width: 50%;
+   width: 100%;
    margin: 1% auto;
 }
 
@@ -63,6 +63,14 @@
    font-size: 15px;
 }
 
+.pythonCodeContainer {
+   overflow-x: auto; /* Enable horizontal scrolling */
+   word-wrap: break-word; /* Break long words */
+   white-space: pre-wrap; /* Preserve formatting */
+   max-width: auto;
+ }
+ 
+
 @media (max-width:700px){
    .containerHeader{
       padding: 40px;
@@ -72,7 +80,7 @@
    }
 
    .containerItems{
-      width: 90%;
+      width: 95%;
    }
 
    .itemHeader{
@@ -85,7 +93,7 @@
 
    .itemDescription{
       margin-top: 20px;
-      width: 99%;
+      width: 100%;
    }
    .introIcon{
       width: 100%;
