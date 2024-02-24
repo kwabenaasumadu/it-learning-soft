@@ -7,17 +7,32 @@ import { useRouter } from "next/router";
 
 function Index() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigateToPython = () => {
     router.push("/comps/courses/python/");
+    setIsLoading(true);
   };
 
   const navigateToProgramming = () => {
-   router.push("/comps/courses/programming/");
- };
+    router.push("/comps/courses/programming/");
+    setIsLoading(true);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3500);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
+      {isLoading && (
+        <div className={styles.loadingOverlay}>
+          <div className={styles.loadingSpinner}></div>
+        </div>
+      )}
       <div className={styles.container}>
         <div className={styles.containerFirstHeader}>
           <p>Popular Online Courses</p>
@@ -29,8 +44,7 @@ function Index() {
 
         <div className={styles.containerItems}>
           <div className={styles.items}>
-
-          <div className={styles.item}>
+            <div className={styles.item}>
               <div className={styles.iconContainer}>
                 <BookIcon className={styles.icon} />
               </div>
@@ -41,16 +55,15 @@ function Index() {
 
               <div className={styles.itemDes}>
                 <p>
-                  Sorem hpsum folor sixdsft amhtget, consectetur adipiscing
-                  eliht, sed do eiusmod tempor incidi.
+                  Introduction to programmingWhat is programming? Programming is
+                  writing computer...
                 </p>
               </div>
 
               <div className={styles.itemAction}>
-                <p onClick={navigateToProgramming}>Read More </p>
+                <p onClick={navigateToProgramming}>Learn More </p>
               </div>
             </div>
-
 
             <div className={styles.item}>
               <div className={styles.iconContainer}>
@@ -69,11 +82,9 @@ function Index() {
               </div>
 
               <div className={styles.itemAction}>
-                <p onClick={navigateToPython}>Read More </p>
+                <p onClick={navigateToPython}>Learn More </p>
               </div>
             </div>
-
-   
 
             <div className={styles.item}>
               <div className={styles.iconContainer}>

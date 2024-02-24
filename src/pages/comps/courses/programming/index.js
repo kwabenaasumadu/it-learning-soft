@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../../../styles/programming.module.css";
+import Image from "next/image";
 
 function Index() {
   return (
@@ -13,6 +14,16 @@ function Index() {
           <div className={styles.item}>
             <div className={styles.itemHeader}>
               <h1>Introduction To Programming</h1>
+            </div>
+
+            <div className={styles.imageContainer}>
+              <Image
+                src="/introProgramming.jpg"
+                width={600}
+                height={250}
+                alt="intro_programming"
+                className={styles.introIcon}
+              />
             </div>
 
             <div className={styles.itemDescription}>
@@ -91,6 +102,15 @@ function Index() {
               <div className={styles.itemDesHeader}>
                 <h1>Programmer</h1>
               </div>
+              <div className={styles.imageContainer}>
+                <Image
+                  src="/programmer.jpg"
+                  width={600}
+                  height={250}
+                  alt="intro_programming"
+                  className={styles.introIcon}
+                />
+              </div>
               <p>
                 A programmer, also sometimes referred to as a software engineer,
                 software developer, or coder, is a person who can design,
@@ -125,6 +145,16 @@ function Index() {
               <div className={styles.itemDesHeader}>
                 <h1>Essential Skills For Programmers</h1>
               </div>
+
+              <div className={styles.imageContainer}>
+                <Image
+                  src="/skills.jpg"
+                  width={600}
+                  height={250}
+                  alt="intro_programming"
+                  className={styles.introIcon}
+                />
+              </div>
               <p>
                 <ul>
                   <li>
@@ -149,6 +179,15 @@ function Index() {
             <div className={styles.itemDescription}>
               <div className={styles.itemDesHeader}>
                 <h1>Benefits Of Learning Programming</h1>
+              </div>
+              <div className={styles.imageContainer}>
+                <Image
+                  src="/benefits.jpg"
+                  width={600}
+                  height={250}
+                  alt="intro_programming"
+                  className={styles.introIcon}
+                />
               </div>
               <p>
                 <ul>
