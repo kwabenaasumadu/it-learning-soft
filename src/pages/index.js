@@ -19,7 +19,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 4500); 
+    }, 1500); 
     return () => clearTimeout(timer);
   }, []);
 
@@ -35,6 +35,7 @@ export default function Home() {
       {loading && (
         <div className={styles.loadingOverlay}>
           <div className={styles.loadingSpinner}></div>
+          <p>Checking</p>
         </div>
       )}
 

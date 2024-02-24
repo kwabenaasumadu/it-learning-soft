@@ -39,8 +39,8 @@ function Index() {
 
           <div className={styles.middleItems}>
             <div className={styles.items}>
-              <p>needhelp@gmail.com</p>
-              <p>+233 597063145</p>
+              <p>kwabenasakyi450@gmail.com</p>
+              <p>0597063145</p>
             </div>
           </div>
 
