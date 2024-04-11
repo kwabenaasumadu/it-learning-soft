@@ -25,9 +25,7 @@ function Index() {
 
             <div className={styles.itemMessage}>
               <p>
-                Sorem hpsum folor sixdsft amhtget, consectetur adipiscing eliht,
-                sed do eiusmod tempor incidi. Sorem hpsum folor sixdsft amhtget,
-                consectetur adipiscing eliht, sed do eiusmod tempor incidi.
+               Oops!!!
               </p>
             </div>
 
@@ -41,7 +39,7 @@ function Index() {
             </div>
 
             <div className={styles.itemName}>
-              <h1>Kwabena Sakyi Asumadu</h1>
+              <h1>Oop!!</h1>
             </div>
           </div>
         </div>
