@@ -15,7 +15,7 @@ function Index() {
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState("");
-  const [answerData, setAnswerData] = useState(selectedAnswer)
+  const [answerData, setAnswerData] = useState(selectedAnswer);
 
   const [questionsAndAnswer, setQuestionsAndAnswer] = useState([]);
 
@@ -71,23 +71,6 @@ function Index() {
   const handleClose1 = () => setOpen1(false);
 
 
-  const showEditAnswer = (rowAns) => {
-    setSelectedAnswer(rowAns);
-    setAnswerData(rowAns); // Set the current answer to the state variable
-    setOpen1(true); // Open the edit modal
-  };
-
-  const editAnswerSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const answerRef = ref(db, `questions/${selectedAnswer.key}`);
-      await set(answerRef, answerData);
-      toast.success("Answer updated successfully");
-      setOpen1(false); // Close the edit modal
-    } catch (error) {
-      toast.error("Error updating answer");
-    }
-  };
 
   return (
     <>
@@ -104,18 +87,15 @@ function Index() {
           {questionsAndAnswer.map((chat, index) => (
             <div className={styles.chats} key={index}>
               <div className={styles.questionChatContainer}>
-                <span>Kwabena</span>
-                <h1>{chat.question}</h1>
-                <em>{chat.date}</em>
+                <span></span>
+                <h1>{chat?.question}</h1>
+                <em>{chat?.date}</em>
               </div>
 
-              <div
-                className={styles.answerChatContainer}
-                onClick={() => showEditAnswer(chat.answer)}
-              >
-                <span>Kwabena</span>
-                <h1>{chat?.answer || ""}</h1>
-                <em>{chat.date}</em>
+              <div className={styles.answerChatContainer}>
+                <span></span>
+                <h1>{chat?.answer}</h1>
+                <em>{chat?.date}</em>
               </div>
             </div>
           ))}
@@ -155,7 +135,6 @@ function Index() {
           </form>
         </div>
       </Modal>
-
 
       <ToastContainer />
     </>
