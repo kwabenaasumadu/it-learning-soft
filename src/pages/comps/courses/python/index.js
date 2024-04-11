@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import React, { useState } from "react";
 import styles from "../../../../styles/python.module.css";
 import { db } from "../../../../../firebase.config";
-import { push, ref, get, set } from "firebase/database";
+import { push, ref, get } from "firebase/database";
 import Image from "next/image";
 import { useEffect } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 function Index() {
   const [formData, setFormData] = useState({
@@ -13,6 +13,7 @@ function Index() {
   });
 
   const [pythonCourseData, setPythonCourseData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,12 +27,16 @@ function Index() {
     e.preventDefault();
 
     try {
-      const newDataRef = push(ref(db, "python_course"), formData);
-      const newDataRefKey = newDataRef.key;
-      return newDataRefKey;
+      push(ref(db, "python_course"), formData);
     } catch (e) {
-      console.error("Error submitting");
+      console.error("Error submitting:", e);
     }
+
+    // Clear form data after submission
+    setFormData({
+      Title: "",
+      Body: "",
+    });
   };
 
   useEffect(() => {
@@ -51,7 +56,7 @@ function Index() {
           setPythonCourseData([]);
         }
       } catch (error) {
-        console.error("Error fetching data:");
+        console.error("Error fetching data:", error);
         setPythonCourseData([]);
       }
     };
@@ -62,6 +67,9 @@ function Index() {
     return () => clearInterval(fetchInterval);
   }, []);
 
+  // Calculate the index of the current item based on the currentPage
+  const currentIndex = currentPage % pythonCourseData.length;
+
   return (
     <>
       <div className={styles.container}>
@@ -71,42 +79,45 @@ function Index() {
 
         <div className={styles.containerItems}>
           <div className={styles.item}>
-            <div className={styles.itemHeader}></div>
+            {pythonCourseData.length > 0 && (
+              <>
+                <div className={styles.itemHeader}>
+                  <h1>{pythonCourseData[currentIndex].Title}</h1>
+                </div>
 
-            <div className={styles.imageContainer}>
-              <Image
-                src="/pythonIcon.png"
-                width={600}
-                height={250}
-                alt="python_cion"
-                className={styles.introIcon}
-              />
-            </div>
+                <div className={styles.itemDescription}>
+                  
+                  {pythonCourseData[currentIndex].Body}
+                </div>
+              </>
+            )}
           </div>
-
-          {pythonCourseData.map((data, index) => (
-            <div className={styles.item} key={index}>
-              <div className={styles.itemHeader}>
-                <h1>{data.Title || "Default Title"}</h1>
-              </div>
-
-              <div
-                className={`${styles.itemDescription} ${styles.pythonCodeContainer}`}
-              >
-                <SyntaxHighlighter language="python">
-                  {data.Body}
-                </SyntaxHighlighter>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 
-      {/* <div>
+      {/* Pagination controls */}
+      <div className={styles.pagination}>
+        <button
+          onClick={() => setCurrentPage((prevPage) => prevPage - 1)}
+          disabled={currentPage === 0}
+        >
+          Previous
+        </button>
+        <span>{currentPage + 1}/{pythonCourseData.length}</span>
+        <button
+          onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
+          disabled={currentPage === pythonCourseData.length - 1}
+        >
+          Next
+        </button>
+      </div>
+
+      {/* Form for adding new data */}
+       {/* <div className={styles.addForm}>
         <form onSubmit={handleSubmit}>
           <input
             name="Title"
-            placeholder="title"
+            placeholder="Title"
             value={formData.Title}
             onChange={handleChange}
           />
@@ -118,7 +129,7 @@ function Index() {
           />
           <button type="submit">Submit</button>
         </form>
-      </div> */}
+      </div>  */}
     </>
   );
 }

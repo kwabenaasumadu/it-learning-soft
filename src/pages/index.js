@@ -12,14 +12,14 @@ export default function Home() {
 
   useEffect(() => {
     if (user && user.emailVerified) {
-      toast.success(`Welcome ${user.displayName || 'User'}`);
+      toast.success(`Welcome ${user.displayName || "User"}`);
     }
   }, [user]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1000); 
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -35,7 +35,7 @@ export default function Home() {
       {loading && (
         <div className={styles.loadingOverlay}>
           <div className={styles.loadingSpinner}></div>
-          <p>Checking</p>
+          <p>Please wait...</p>
         </div>
       )}
 

@@ -42,13 +42,18 @@
 }
 
 .itemDescription{
-   width: 100%;
+   width: 60%;
    margin: 1% auto;
+   overflow-x: auto;
+   word-wrap: break-word;
+   white-space: pre-wrap;
+   text-align: left;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: left;
 }
 
-.itemDescription p{
-   font-family: sans-serif;
-}
 
 .itemAction{
    margin-top: 7%;
@@ -70,6 +75,21 @@
    max-width: auto;
  }
  
+ .pagination{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+ .pagination button{
+   padding: 15px;
+   margin: 15px;
+   width: 100px;
+   border-radius: 10px;
+   background-color: dodgerblue;
+   border: none;
+   color: #fff;
+ }
 
 @media (max-width:700px){
    .containerHeader{
@@ -88,12 +108,14 @@
    }
 
    .itemHeader h1{
-      font-size: 18px;
+      font-size: 1px;
+      text-align: center;
+      text-transform: uppercase;
    }
 
    .itemDescription{
       margin-top: 20px;
-      width: 100%;
+      width: 90%;
    }
    .introIcon{
       width: 100%;
