@@ -1,18 +1,25 @@
 import Head from "next/head";
-import Comps from "../pages/comps";
 import styles from "../styles/Home.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import { useAuth } from "../lib/authContext";
 import Login from "../pages/login";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const { user } = useAuth();
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
+
+  function goToComps() {
+    router.push("/comps");
+  }
 
   useEffect(() => {
     if (user && user.emailVerified) {
       toast.success(`Welcome ${user.displayName || "User"}`);
+    } else {
+      setLoading(false);
     }
   }, [user]);
 
@@ -40,7 +47,7 @@ export default function Home() {
       )}
 
       <div className={styles.container}>
-        {!loading && user ? <Comps /> : <Login />}
+        {!loading && user ? goToComps() : <Login />}
       </div>
       <ToastContainer />
     </>

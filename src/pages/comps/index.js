@@ -6,10 +6,14 @@ import Categories from "./categories";
 import Blog from "./blog";
 import Feedback from "./feedback";
 import Footer from "./footer";
+import Head from "next/head";
 
 function Index() {
   return (
     <>
+      <Head>
+        <title>Program With Cod</title>
+      </Head>
       <div>
         <FirstHeader />
         <SecondHeader />
@@ -17,7 +21,7 @@ function Index() {
         <Categories />
         <Blog />
         <Feedback />
-        <Footer/>
+        <Footer />
       </div>
     </>
   );

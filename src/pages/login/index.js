@@ -9,6 +9,7 @@ import { sendEmailVerification } from "firebase/auth";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 function Index() {
   const [email, setEmail] = useState("");
@@ -16,6 +17,7 @@ function Index() {
   const [loginLoading, setLoginLoading] = useState(false);
   const [createLoading, setCreateLoading] = useState(false);
   const [resetLoading, setResetLoading] = useState(false);
+  const router = useRouter();
 
   const SignIn = async (e) => {
     e.preventDefault();
@@ -32,6 +34,7 @@ function Index() {
         password
       );
       toast.success("Welcome", userCredential.user.email);
+      router.push("/comps");
     } catch (error) {
       toast.error("Email or password error");
     } finally {
@@ -40,7 +43,7 @@ function Index() {
   };
 
   const resetPassword = async () => {
-    setResetLoading(true)
+    setResetLoading(true);
     if (!email) {
       toast.error("Please enter your email address");
     }
@@ -48,9 +51,11 @@ function Index() {
     try {
       await sendPasswordResetEmail(auth, email);
       toast.success("Password reset sent successfully");
+      router.push("/");
+
     } catch (error) {
       toast.error("Error sending password reset email");
-      setResetLoading(false)
+      setResetLoading(false);
     }
   };
 
@@ -75,6 +80,7 @@ function Index() {
       );
       await sendEmailVerification(newUserCredential.user);
       toast.success("Email verification sent to", newUserCredential.user.email);
+      router.push("/comps");
     } catch (error) {
       toast.error("Error creating account");
     }
@@ -109,13 +115,19 @@ function Index() {
           </div>
 
           <div className={styles.submitButton}>
-            <button onClick={SignIn}>{loginLoading ? "wait..." : "Login"}</button>
-            <button onClick={resetPassword}>{resetLoading ? "semding..." : "Reset Password"}</button>
-            <button onClick={createAccount}>{createLoading ? "creating..." : "Create Account"}</button>
+            <button onClick={SignIn}>
+              {loginLoading ? "wait..." : "Login"}
+            </button>
+            <button onClick={resetPassword}>
+              {resetLoading ? "semding..." : "Reset Password"}
+            </button>
+            <button onClick={createAccount}>
+              {createLoading ? "creating..." : "Create Account"}
+            </button>
           </div>
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </>
   );
 }
