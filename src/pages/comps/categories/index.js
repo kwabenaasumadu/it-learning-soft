@@ -4,6 +4,8 @@ import List from "@mui/icons-material/List";
 import BookIcon from "@mui/icons-material/Book";
 import Web from "@mui/icons-material/Web";
 import { useRouter } from "next/router";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Index() {
   const router = useRouter();
@@ -26,6 +28,10 @@ function Index() {
     return () => clearTimeout(timer);
   }, []);
 
+  function unavailability() {
+    toast.error("Upcoming Course");
+  }
+
   return (
     <>
       {isLoading && (
@@ -44,7 +50,8 @@ function Index() {
 
         <div className={styles.containerItems}>
           <div className={styles.items}>
-            <div className={styles.item}>
+
+            <div className={styles.item} onClick={navigateToProgramming}>
               <div className={styles.iconContainer}>
                 <BookIcon className={styles.icon} />
               </div>
@@ -61,16 +68,16 @@ function Index() {
               </div>
 
               <div className={styles.itemAction}>
-                <p onClick={navigateToProgramming}>Learn More </p>
+                <p>Learn More </p>
               </div>
             </div>
 
-            <div className={styles.item}>
+            <div className={styles.item} onClick={navigateToPython}>
               <div className={styles.iconContainer}>
                 <List className={styles.icon} />
               </div>
 
-              <div className={styles.itemHeader} onClick={navigateToPython}>
+              <div className={styles.itemHeader}>
                 <h1>Learn Python</h1>
               </div>
 
@@ -82,11 +89,11 @@ function Index() {
               </div>
 
               <div className={styles.itemAction}>
-                <p onClick={navigateToPython}>Learn More </p>
+                <p>Learn More </p>
               </div>
             </div>
 
-            <div className={styles.item}>
+            <div className={styles.item} onClick={unavailability}>
               <div className={styles.iconContainer}>
                 <Web className={styles.icon} />
               </div>
@@ -96,10 +103,7 @@ function Index() {
               </div>
 
               <div className={styles.itemDes}>
-                <p>
-                  Sorem hpsum folor sixdsft amhtget, consectetur adipiscing
-                  eliht, sed do eiusmod tempor incidi.
-                </p>
+                <p>Upcoming Course</p>
               </div>
 
               <div className={styles.itemAction}>
@@ -107,7 +111,7 @@ function Index() {
               </div>
             </div>
 
-            <div className={styles.item}>
+            <div className={styles.item} onClick={unavailability}>
               <div className={styles.iconContainer}>
                 <List className={styles.icon} />
               </div>
@@ -117,10 +121,7 @@ function Index() {
               </div>
 
               <div className={styles.itemDes}>
-                <p>
-                  Sorem hpsum folor sixdsft amhtget, consectetur adipiscing
-                  eliht, sed do eiusmod tempor incidi.
-                </p>
+                <p>Upcoming Course</p>
               </div>
 
               <div className={styles.itemAction}>
@@ -128,7 +129,7 @@ function Index() {
               </div>
             </div>
 
-            <div className={styles.item}>
+            <div className={styles.item} onClick={unavailability}>
               <div className={styles.iconContainer}>
                 <List className={styles.icon} />
               </div>
@@ -138,10 +139,7 @@ function Index() {
               </div>
 
               <div className={styles.itemDes}>
-                <p>
-                  Sorem hpsum folor sixdsft amhtget, consectetur adipiscing
-                  eliht, sed do eiusmod tempor incidi.
-                </p>
+                <p>Upcoming Course</p>
               </div>
 
               <div className={styles.itemAction}>
@@ -149,7 +147,7 @@ function Index() {
               </div>
             </div>
 
-            <div className={styles.item}>
+            <div className={styles.item} onClick={unavailability}>
               <div className={styles.iconContainer}>
                 <List className={styles.icon} />
               </div>
@@ -159,10 +157,7 @@ function Index() {
               </div>
 
               <div className={styles.itemDes}>
-                <p>
-                  Sorem hpsum folor sixdsft amhtget, consectetur adipiscing
-                  eliht, sed do eiusmod tempor incidi.
-                </p>
+                <p>Upcoming Course</p>
               </div>
 
               <div className={styles.itemAction}>
@@ -176,6 +171,7 @@ function Index() {
           <h1>Find More Courses</h1>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 }
