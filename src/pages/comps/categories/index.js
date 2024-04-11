@@ -45,7 +45,7 @@ function Index() {
         </div>
 
         <div className={styles.containerSecondtHeader}>
-          <h1>Let&apos;s Brows All Categories</h1>
+          <h1>Courses</h1>
         </div>
 
         <div className={styles.containerItems}>
